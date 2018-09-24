@@ -25,7 +25,7 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __default__: {}
 
 - `ttl`
-    -  __description__: list of hostnames and targets
+    -  __description__: time to live for all records
     -  __type__: `string`
     -  __default__: "300"
 
@@ -33,11 +33,6 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __description__: list of hostnames and targets
     -  __type__: `map`
     -  __default__: {}
-
-- `ttl`
-    -  __description__: list of hostnames and targets
-    -  __type__: `string`
-    -  __default__: "300"
 
 - `zone_id`
     -  __description__: route 53 zone id
@@ -60,17 +55,16 @@ module "route_53" {
     ttl  = 300
 
     a_records = {
-        "www"   = "1.2.3.4"
+        "www" = "1.2.3.4"
     }
 
     a_alias_records = {
-      "www"   = "some ALB name"
-  }
-
-    cname_records = {
-        "de"   = "en.ryte.com"
+        "www" = "some ALB name"
     }
 
+    cname_records = {
+        "de"  = "en.ryte.com"
+    }
 
     txt_records = {
         "a"   = "Hello World"
