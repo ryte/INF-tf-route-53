@@ -27,6 +27,12 @@ variable "ttl" {
   default = "300"
 }
 
+variable "mx_records" {
+  type = "list"
+  description = "list of mx records with weight"
+  default = []
+}
+
 variable "txt_records" {
   type = "map"
   description = "list of hostnames and targets"

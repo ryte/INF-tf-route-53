@@ -69,6 +69,14 @@ module "route_53" {
         "a"   = "Hello World"
     }
 
+    mx_records = [
+        "1 ASPMX.L.GOOGLE.COM",
+        "5 ALT1.ASPMX.L.GOOGLE.COM",
+        "5 ALT2.ASPMX.L.GOOGLE.COM",
+        "10 ASPMX2.GOOGLEMAIL.COM",
+        "10 ASPMX3.GOOGLEMAIL.COM",
+    ]
+
     source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.0"
 }
 ```

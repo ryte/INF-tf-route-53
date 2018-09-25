@@ -46,3 +46,12 @@ resource "aws_route53_record" "txt_records" {
   records = ["${element( values( var.txt_records ), count.index )}"]
 }
 
+resource "aws_route53_record" "mx_records" {
+  count   = "${length(var.mx_records) > 1 ? 1 : 0}"
+  name    = ""
+  ttl     = "${var.ttl}"
+  type    = "MX"
+  zone_id = "${data.aws_route53_zone.zone.id}"
+
+  records = ["${var.mx_records}"]
+}
