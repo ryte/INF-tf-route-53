@@ -39,7 +39,17 @@ resource "aws_route53_record" "txt_records" {
   type    = "TXT"
   zone_id = "${var.zone_id}"
 
-  records = ["${split(",", element( values( var.txt_records ), count.index ))}"]
+  records = ["${element( values( var.txt_records ), count.index )}"]
+}
+
+resource "aws_route53_record" "txt_record_root" {
+  count   = "${length(var.txt_record_root)}"
+  name    = ""
+  ttl     = "${var.ttl}"
+  type    = "TXT"
+  zone_id = "${var.zone_id}"
+
+  records = ["${var.txt_record_root}"]
 }
 
 resource "aws_route53_record" "mx_records" {

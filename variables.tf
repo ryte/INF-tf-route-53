@@ -34,6 +34,12 @@ variable "txt_records" {
   default = {}
 }
 
+variable "txt_record_root" {
+  type = "list"
+  description = "list of TXT entries which will be set for the root domain"
+  default = []
+}
+
 variable "zone_id" {
   type = "string"
   description = "zone id of domain"

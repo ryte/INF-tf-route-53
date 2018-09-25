@@ -38,6 +38,11 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `map`
     -  __default__: {}
 
+- `txt_record_root`
+    -  __description__: txt_record_root
+    -  __type__: `list`
+    -  __default__: []
+
 - `zone_id`
     -  __description__: route 53 zone id
     -  __type__: `string`
@@ -100,6 +105,7 @@ None
 ## Changelog
 
 0.1.0 - Initial release.
+0.1.1 - Separate variable for TXT records for root domain
 
 ## License
 
