@@ -38,6 +38,11 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `map`
     -  __default__: {}
 
+- `zone_id`
+    -  __description__: route 53 zone id
+    -  __type__: `string`
+
+
 ## Usage
 
 get the zone
@@ -50,11 +55,12 @@ data "aws_route53_zone" "zone" {
 
 ```hcl
 module "route_53" {
-    zone = "${data.aws_route53_zone.zone.id}"
+    zone_id = "${data.aws_route53_zone.zone.id}"
     ttl  = 300
 
     a_records = {
-        "www" = "1.2.3.4"
+        ""    = "1.2.3.4"
+        "www" = "2.3.4.5"
     }
 
     a_alias_records = {
@@ -66,15 +72,16 @@ module "route_53" {
     }
 
     txt_records = {
-        "a"   = "Hello World"
+        ""      = "Hello World"
+        "multi" = "comma,separated,with,no,space"
     }
 
     mx_records = [
-        "1 ASPMX.L.GOOGLE.COM",
-        "5 ALT1.ASPMX.L.GOOGLE.COM",
-        "5 ALT2.ASPMX.L.GOOGLE.COM",
-        "10 ASPMX2.GOOGLEMAIL.COM",
-        "10 ASPMX3.GOOGLEMAIL.COM",
+        "1 aspmx.l.google.com",
+        "5 alt2.aspmx.l.google.com",
+        "5 alt1.aspmx.l.google.com",
+        "10 aspmx2.googlemail.com",
+        "10 aspmx3.googlemail.com",
     ]
 
     source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.0"

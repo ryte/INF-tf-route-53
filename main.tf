@@ -1,13 +1,9 @@
-data "aws_route53_zone" "zone" {
-  name = "${var.domain}."
-}
-
 resource "aws_route53_record" "a_records" {
   count   = "${length(var.a_records)}"
   name    = "${element(keys(var.a_records), count.index)}"
   ttl     = "${var.ttl}"
   type    = "A"
-  zone_id = "${data.aws_route53_zone.zone.id}"
+  zone_id = "${var.zone_id}"
 
   records = ["${element( values( var.a_records ), count.index )}"]
 }
@@ -16,11 +12,11 @@ resource "aws_route53_record" "a_alias_records" {
   count   = "${length(var.a_alias_records)}"
   name    = "${element(keys(var.a_alias_records), count.index)}"
   type    = "A"
-  zone_id = "${data.aws_route53_zone.zone.id}"
+  zone_id = "${var.zone_id}"
 
   alias {
     name                   = "${element( values( var.a_alias_records ), count.index )}"
-    zone_id                = "${data.aws_route53_zone.zone.id}"
+    zone_id                = "${var.zone_id}"
     evaluate_target_health = false
   }
 
@@ -31,7 +27,7 @@ resource "aws_route53_record" "cname_records" {
   name    = "${element(keys(var.cname_records), count.index)}"
   ttl     = "${var.ttl}"
   type    = "CNAME"
-  zone_id = "${data.aws_route53_zone.zone.id}"
+  zone_id = "${var.zone_id}"
 
   records = ["${element( values( var.cname_records ), count.index )}"]
 }
@@ -41,9 +37,9 @@ resource "aws_route53_record" "txt_records" {
   name    = "${element(keys(var.txt_records), count.index)}"
   ttl     = "${var.ttl}"
   type    = "TXT"
-  zone_id = "${data.aws_route53_zone.zone.id}"
+  zone_id = "${var.zone_id}"
 
-  records = ["${element( values( var.txt_records ), count.index )}"]
+  records = ["${split(",", element( values( var.txt_records ), count.index ))}"]
 }
 
 resource "aws_route53_record" "mx_records" {
@@ -51,7 +47,7 @@ resource "aws_route53_record" "mx_records" {
   name    = ""
   ttl     = "${var.ttl}"
   type    = "MX"
-  zone_id = "${data.aws_route53_zone.zone.id}"
+  zone_id = "${var.zone_id}"
 
   records = ["${var.mx_records}"]
 }

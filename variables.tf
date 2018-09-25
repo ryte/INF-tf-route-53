@@ -16,11 +16,6 @@ variable "cname_records" {
   default = {}
 }
 
-variable "domain" {
-  type = "string"
-  description = "domain where to add the records"
-}
-
 variable "ttl" {
   type = "string"
   description = "ttl"
@@ -37,4 +32,9 @@ variable "txt_records" {
   type = "map"
   description = "list of hostnames and targets"
   default = {}
+}
+
+variable "zone_id" {
+  type = "string"
+  description = "zone id of domain"
 }
