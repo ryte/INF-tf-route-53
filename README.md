@@ -24,6 +24,10 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `map`
     -  __default__: {}
 
+- `domain`
+    -  __description__: domain where to add the records
+    -  __type__: `string`
+
 - `ttl`
     -  __description__: time to live for all records
     -  __type__: `string`
@@ -33,11 +37,6 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __description__: list of hostnames and targets
     -  __type__: `map`
     -  __default__: {}
-
-- `zone_id`
-    -  __description__: route 53 zone id
-    -  __type__: `string`
-
 
 ## Usage
 
