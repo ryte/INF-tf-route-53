@@ -43,7 +43,6 @@ resource "aws_route53_record" "txt_records" {
 }
 
 resource "aws_route53_record" "txt_record_root" {
-  count   = "${length(var.txt_record_root)}"
   name    = ""
   ttl     = "${var.ttl}"
   type    = "TXT"
