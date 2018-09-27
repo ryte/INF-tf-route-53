@@ -62,7 +62,7 @@ resource "aws_route53_record" "mx_records" {
 }
 
 resource "aws_route53_record" "srv_records" {
-  count   = "${length(var.srv_records) > 1 ? 1 : 0}"
+  count   = "${length(var.srv_records)}"
   name    = "${element(keys(var.srv_records), count.index)}"
   ttl     = "${var.ttl}"
   type    = "SRV"
