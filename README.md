@@ -33,6 +33,12 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `string`
     -  __default__: "300"
 
+- `srv_records`
+    -  __description__: list of hostnames and targets
+    -  __type__: `map`
+    -  __default__: {}
+
+
 - `txt_records`
     -  __description__: list of hostnames and targets
     -  __type__: `map`
@@ -89,7 +95,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.0"
+    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.1"
 }
 ```
 
