@@ -32,7 +32,7 @@ resource "aws_route53_record" "cname_records" {
 }
 
 resource "aws_route53_record" "txt_records" {
-  count   = "${length(var.txt_records) > 1 ? 1 : 0}"
+  count   = "${length(var.txt_records)}"
   name    = "${element(keys(var.txt_records), count.index)}"
   ttl     = "${var.ttl}"
   type    = "TXT"
