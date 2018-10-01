@@ -33,10 +33,21 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `string`
     -  __default__: "300"
 
+- `srv_records`
+    -  __description__: list of hostnames and targets
+    -  __type__: `map`
+    -  __default__: {}
+
+
 - `txt_records`
     -  __description__: list of hostnames and targets
     -  __type__: `map`
     -  __default__: {}
+
+- `txt_record_root`
+    -  __description__: txt_record_root
+    -  __type__: `list`
+    -  __default__: []
 
 - `zone_id`
     -  __description__: route 53 zone id
@@ -84,7 +95,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.0"
+    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.1"
 }
 ```
 
@@ -100,6 +111,7 @@ None
 ## Changelog
 
 0.1.0 - Initial release.
+0.1.1 - Separate variable for TXT records for root domain
 
 ## License
 
