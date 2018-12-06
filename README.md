@@ -2,6 +2,7 @@
 
 Terraform module for configuring route 53 with maps
 
+Note: __The separator is ';' between key and value, the value may have leading and trailing spaces__
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
