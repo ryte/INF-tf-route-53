@@ -11,18 +11,18 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
 
 - `a_records`
     -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
+    -  __type__: `list`
+    -  __default__: []
 
 - `a_alias_records`
     -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
+    -  __type__: `list`
+    -  __default__: []
 
 - `cname_records`
     -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
+    -  __type__: `list`
+    -  __default__: []
 
 - `domain`
     -  __description__: domain where to add the records
@@ -35,14 +35,13 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
 
 - `srv_records`
     -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
+    -  __type__: `list`
+    -  __default__: []
 
 - `txt_records`
     -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
+    -  __type__: `list`
+    -  __default__: []
 
 - `txt_record_root`
     -  __description__: txt_record_root
@@ -69,23 +68,23 @@ module "route_53" {
     zone_id = "${data.aws_route53_zone.zone.id}"
     ttl  = 300
 
-    a_records = {
-        ""    = "1.2.3.4"
-        "www" = "2.3.4.5"
-    }
+    a_records = [
+        ";    1.2.3.4",
+        "ww;  2.3.4.5"
+    ]
 
-    a_alias_records = {
-        "www" = "some ALB name"
-    }
+    a_alias_records = [
+        "www;    ${alb_name},${zone_id}",
+    ]
 
-    cname_records = {
-        "de"  = "en.ryte.com"
-    }
+    cname_records = [
+        "de;  en.ryte.com",
+    ]
 
-    txt_records = {
-        ""      = "Hello World"
-        "multi" = "comma,separated,with,no,space"
-    }
+    txt_records = [
+        "";     "Hello World",
+        "multi; "comma,separated,with,no,space",
+    ]
 
     mx_records = [
         "1 aspmx.l.google.com",
@@ -95,7 +94,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.1.1"
+    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.2.0"
 }
 ```
 
@@ -110,8 +109,9 @@ None
 
 ## Changelog
 
-0.1.0 - Initial release.
+0.2.0 - make everything a list instead of map to avoid reordering items
 0.1.1 - Separate variable for TXT records for root domain
+0.1.0 - Initial release.
 
 ## License
 

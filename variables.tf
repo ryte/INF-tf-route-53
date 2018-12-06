@@ -1,19 +1,19 @@
 variable "a_records" {
-  type = "map"
+  type = "list"
   description = "list of hostnames and targets"
-  default = {}
+  default = []
 }
 
 variable "a_alias_records" {
-  type = "map"
+  type = "list"
   description = "list of hostnames and targets"
-  default = {}
+  default = []
 }
 
 variable "cname_records" {
-  type = "map"
+  type = "list"
   description = "list of hostnames and targets"
-  default = {}
+  default = []
 }
 
 variable "ttl" {
@@ -29,15 +29,15 @@ variable "mx_records" {
 }
 
 variable "srv_records" {
-  type = "map"
+  type = "list"
   description = "list of hostnames and targets"
-  default = {}
+  default = []
 }
 
 variable "txt_records" {
-  type = "map"
+  type = "list"
   description = "list of hostnames and targets"
-  default = {}
+  default = []
 }
 
 variable "txt_record_root" {
