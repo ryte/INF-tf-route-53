@@ -83,7 +83,7 @@ module "route_53" {
     ]
 
     txt_records = [
-        "";     "Hello World",
+        "record;     "Hello World",
         "multi; "comma,separated,with,no,space",
     ]
 
