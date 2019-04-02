@@ -107,7 +107,7 @@ module "route_53" {
 - `a_alias_records`
     -  __description__: list of ALIAS records
     -  __type__: `list`
-    
+
 - `cname_records`
     -  __description__: list of CNAME records
     -  __type__: `list`
@@ -131,8 +131,9 @@ module "route_53" {
 
 ## Changelog
 
-0.1.0 - Initial release.
+0.1.2 - Update output variable of all records
 0.1.1 - Separate variable for TXT records for root domain
+0.1.0 - Initial release.
 
 ## License
 
