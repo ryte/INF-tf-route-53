@@ -38,7 +38,6 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
     -  __type__: `map`
     -  __default__: {}
 
-
 - `txt_records`
     -  __description__: list of hostnames and targets
     -  __type__: `map`
@@ -101,7 +100,29 @@ module "route_53" {
 
 ## Outputs
 
-None
+- `a_records`
+    -  __description__: list of A records
+    -  __type__: `list`
+
+- `a_alias_records`
+    -  __description__: list of ALIAS records
+    -  __type__: `list`
+
+- `cname_records`
+    -  __description__: list of CNAME records
+    -  __type__: `list`
+
+- `srv_records`
+    -  __description__: list of SRV records
+    -  __type__: `list`
+
+- `txt_records`
+    -  __description__: list of TXT records
+    -  __type__: `list`
+
+- `txt_record_root`
+    -  __description__: txt_record_root
+    -  __type__: `list`
 
 ## Authors
 
@@ -110,8 +131,9 @@ None
 
 ## Changelog
 
-0.1.0 - Initial release.
+0.1.2 - Update output variable of all records
 0.1.1 - Separate variable for TXT records for root domain
+0.1.0 - Initial release.
 
 ## License
 
