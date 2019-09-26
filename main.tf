@@ -5,7 +5,7 @@ resource "aws_route53_record" "a_records" {
   type     = "A"
   zone_id  = var.zone_id
 
-  records  = each.value.records
+  records = each.value.records
 }
 
 resource "aws_route53_record" "a_alias_records" {
@@ -28,7 +28,7 @@ resource "aws_route53_record" "cname_records" {
   type     = "CNAME"
   zone_id  = var.zone_id
 
-  records  = each.value.records
+  records = each.value.records
 }
 
 resource "aws_route53_record" "txt_records" {
@@ -38,7 +38,7 @@ resource "aws_route53_record" "txt_records" {
   type     = "TXT"
   zone_id  = var.zone_id
 
-  records  = each.value.records
+  records = each.value.records
 }
 
 resource "aws_route53_record" "mx_records" {
@@ -58,5 +58,5 @@ resource "aws_route53_record" "srv_records" {
   type     = "SRV"
   zone_id  = var.zone_id
 
-  records  = each.value.records
+  records = each.value.records
 }
