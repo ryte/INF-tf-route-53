@@ -32,9 +32,9 @@ module "route_53" {
 
     a_alias_records = {
         1 = {
-            name    = "name"
-            record  = "target"
-            zone_id = "taret zone id"
+            name    = "www"
+            record  = "webservice-main-alb-123465789012.eu-central-1.elb.amazonaws.com"
+            zone_id = "ABCDEFGHIJKLMN" // zone_id of the loadbalancer
         }
     }
 
@@ -48,11 +48,11 @@ module "route_53" {
     txt_records = {
         root = {
           name = ""
-          records = ["record"]
+          records = ["v=spf1", "site-verification=dummy"]
         }
         1 = {
           name    = "name"
-          records = ["record"]
+          records = ["domainkey=foo", "challenge=other"]
         }
     }
 
@@ -84,7 +84,7 @@ The following input variables are optional (have default values):
 
 ### a\_alias\_records
 
-Description: list of hostnames and targets
+Description: map of objects for A alias records
 
 Type: `object`
 
@@ -92,7 +92,7 @@ Default: `<map>`
 
 ### a\_records
 
-Description: list of hostnames and targets
+Description: map of objects for A records
 
 Type: `object`
 
@@ -100,7 +100,7 @@ Default: `<map>`
 
 ### cname\_records
 
-Description: list of hostnames and targets
+Description: map of objects for CNAME records
 
 Type: `object`
 
@@ -116,7 +116,7 @@ Default: `<list>`
 
 ### srv\_records
 
-Description: list of hostnames and targets
+Description: map of objects for SRV records
 
 Type: `object`
 
@@ -132,7 +132,7 @@ Default: `"300"`
 
 ### txt\_records
 
-Description: list of hostnames and targets
+Description: map of objects for TXT records
 
 Type: `object`
 

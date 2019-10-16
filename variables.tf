@@ -3,7 +3,7 @@ variable "a_records" {
     name    = string
     records = list(string)
   }))
-  description = "list of hostnames and targets"
+  description = "map of objects for A records"
   default     = {}
 }
 
@@ -13,7 +13,7 @@ variable "a_alias_records" {
     record  = string
     zone_id = string
   }))
-  description = "list of hostnames and targets"
+  description = "map of objects for A alias records"
   default     = {}
 }
 
@@ -22,7 +22,7 @@ variable "cname_records" {
     name    = string
     records = list(string)
   }))
-  description = "list of hostnames and targets"
+  description = "map of objects for CNAME records"
   default     = {}
 }
 
@@ -43,7 +43,7 @@ variable "srv_records" {
     name    = string
     records = list(string)
   }))
-  description = "list of hostnames and targets"
+  description = "map of objects for SRV records"
   default     = {}
 }
 
@@ -52,7 +52,7 @@ variable "txt_records" {
     name    = string
     records = list(string)
   }))
-  description = "list of hostnames and targets"
+  description = "map of objects for TXT records"
   default     = {}
 }
 
