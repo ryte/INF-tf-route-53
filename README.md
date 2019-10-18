@@ -94,7 +94,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "git@github.com:ryte/INF-tf-route-53.git?ref=v0.1.1"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.1.1"
 }
 ```
 
