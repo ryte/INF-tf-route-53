@@ -175,12 +175,11 @@ Description:
 
 ## Changelog
 
-0.2.0 - Upgrade to terraform 0.12.x
-0.1.2 - Update output variable of all records
-0.1.1 - Separate variable for TXT records for root domain
-0.1.0 - Initial release.
+- 0.2.0 - Upgrade to terraform 0.12.x
+- 0.1.2 - Update output variable of all records
+- 0.1.1 - Separate variable for TXT records for root domain
+- 0.1.0 - Initial release.
 
 ## License
-
 
 This software is released under the MIT License (see `LICENSE`).
