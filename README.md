@@ -6,7 +6,8 @@ Terraform module for configuring route 53 with maps
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
 
-
+This project is using [pre-commit](https://pre-commit.com/) to generate parts
+of the readme.
 
 ## Usage
 
