@@ -4,7 +4,7 @@ Terraform module for configuring route 53 with maps
 
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
-and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
+and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
 This project is using [pre-commit](https://pre-commit.com/) to generate parts
 of the readme.
@@ -65,7 +65,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "git@github.com:onpage-org/INF-tf-route-53.git?ref=v0.2.0"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.1.1"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
