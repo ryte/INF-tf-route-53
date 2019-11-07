@@ -65,7 +65,7 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.1.1"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.1"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -176,6 +176,7 @@ Description:
 
 ## Changelog
 
+- 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
 - 0.1.2 - Update output variable of all records
 - 0.1.1 - Separate variable for TXT records for root domain
