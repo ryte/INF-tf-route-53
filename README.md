@@ -6,52 +6,8 @@ Terraform module for configuring route 53 with maps
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
-## Module Input Variables
-
-
-- `a_records`
-    -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
-- `a_alias_records`
-    -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
-- `cname_records`
-    -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
-- `domain`
-    -  __description__: domain where to add the records
-    -  __type__: `string`
-
-- `ttl`
-    -  __description__: time to live for all records
-    -  __type__: `string`
-    -  __default__: "300"
-
-- `srv_records`
-    -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
-- `txt_records`
-    -  __description__: list of hostnames and targets
-    -  __type__: `map`
-    -  __default__: {}
-
-- `txt_record_root`
-    -  __description__: txt_record_root
-    -  __type__: `list`
-    -  __default__: []
-
-- `zone_id`
-    -  __description__: route 53 zone id
-    -  __type__: `string`
-
+This project is using [pre-commit](https://pre-commit.com/) to generate parts
+of the readme.
 
 ## Usage
 
@@ -69,21 +25,36 @@ module "route_53" {
     ttl  = 300
 
     a_records = {
-        ""    = "1.2.3.4"
-        "www" = "2.3.4.5"
+        1 = {
+            name    = ""
+            records = ["1.2.3.4"]
+        }
     }
 
     a_alias_records = {
-        "www" = "some ALB name"
+        1 = {
+            name    = "www"
+            record  = "webservice-main-alb-123465789012.eu-central-1.elb.amazonaws.com"
+            zone_id = "ABCDEFGHIJKLMN" // zone_id of the loadbalancer
+        }
     }
 
     cname_records = {
-        "de"  = "en.ryte.com"
+        1 = {
+            name    = "name"
+            records = ["foo.bar"]
+        }
     }
 
     txt_records = {
-        ""      = "Hello World"
-        "multi" = "comma,separated,with,no,space"
+        root = {
+          name = ""
+          records = ["v=spf1", "site-verification=dummy"]
+        }
+        1 = {
+          name    = "name"
+          records = ["domainkey=foo", "challenge=other"]
+        }
     }
 
     mx_records = [
@@ -94,35 +65,109 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.0"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.1"
 }
 ```
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Required Inputs
+
+The following input variables are required:
+
+### zone\_id
+
+Description: zone id of domain
+
+Type: `string`
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### a\_alias\_records
+
+Description: map of objects for A alias records
+
+Type: `object`
+
+Default: `<map>`
+
+### a\_records
+
+Description: map of objects for A records
+
+Type: `object`
+
+Default: `<map>`
+
+### cname\_records
+
+Description: map of objects for CNAME records
+
+Type: `object`
+
+Default: `<map>`
+
+### mx\_records
+
+Description: list of mx records with weight
+
+Type: `list(string)`
+
+Default: `<list>`
+
+### srv\_records
+
+Description: map of objects for SRV records
+
+Type: `object`
+
+Default: `<map>`
+
+### ttl
+
+Description: ttl
+
+Type: `string`
+
+Default: `"300"`
+
+### txt\_records
+
+Description: map of objects for TXT records
+
+Type: `object`
+
+Default: `<map>`
 
 ## Outputs
 
-- `a_records`
-    -  __description__: list of A records
-    -  __type__: `list`
+The following outputs are exported:
 
-- `a_alias_records`
-    -  __description__: list of ALIAS records
-    -  __type__: `list`
+### a\_alias\_records
 
-- `cname_records`
-    -  __description__: list of CNAME records
-    -  __type__: `list`
+Description:
 
-- `srv_records`
-    -  __description__: list of SRV records
-    -  __type__: `list`
+### a\_records
 
-- `txt_records`
-    -  __description__: list of TXT records
-    -  __type__: `list`
+Description:
 
-- `txt_record_root`
-    -  __description__: txt_record_root
-    -  __type__: `list`
+### cname\_records
+
+Description:
+
+### mx\_records
+
+Description:
+
+### srv\_records
+
+Description:
+
+### txt\_records
+
+Description:
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Authors
 
@@ -131,6 +176,7 @@ module "route_53" {
 
 ## Changelog
 
+- 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
 - 0.1.2 - Update output variable of all records
 - 0.1.1 - Separate variable for TXT records for root domain
