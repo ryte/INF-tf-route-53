@@ -21,7 +21,7 @@ data "aws_route53_zone" "zone" {
 
 ```hcl
 module "route_53" {
-    zone_id = "${data.aws_route53_zone.zone.id}"
+    zone_id = data.aws_route53_zone.zone.id
     ttl  = 300
 
     a_records = {
