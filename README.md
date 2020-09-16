@@ -71,7 +71,7 @@ module "route_53" {
         "ns-42069.awsdns.net",
     ]
 
-    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.1"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.2"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
