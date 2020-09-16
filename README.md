@@ -71,7 +71,7 @@ module "route_53" {
         "ns-42069.awsdns.net",
     ]
 
-    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.2.2"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.0"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -182,7 +182,7 @@ Description:
 
 ## Changelog
 
-- 0.2.2 - Add support for ns records
+- 0.3.0 - Add support for ns records
 - 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
 - 0.1.2 - Update output variable of all records
