@@ -60,3 +60,9 @@ variable "zone_id" {
   type        = string
   description = "zone id of domain"
 }
+
+variable "ns_records" {
+  type        = list(string)
+  description = "list of ns records"
+  default     = []
+}
