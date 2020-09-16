@@ -182,6 +182,7 @@ Description:
 
 ## Changelog
 
+- 0.2.2 - Add support for ns records
 - 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
 - 0.1.2 - Update output variable of all records
