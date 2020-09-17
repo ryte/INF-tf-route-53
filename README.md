@@ -65,11 +65,16 @@ module "route_53" {
         "10 aspmx3.googlemail.com",
     ]
 
-    ns_records = [
-        "ns-420.awsdns.com",
-        "ns-69.awsdns.org",
-        "ns-42069.awsdns.net",
-    ]
+    ns_records = {
+      1 = {
+        name = "kite"
+        records = [
+          "ns-420.awsdns.com",
+          "ns-69.awsdns.org",
+          "ns-42069.awsdns.net",
+        ]
+      }   
+    }
 
     source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.0"
 }
