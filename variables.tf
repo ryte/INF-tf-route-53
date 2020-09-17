@@ -62,7 +62,10 @@ variable "zone_id" {
 }
 
 variable "ns_records" {
-  type        = list(string)
-  description = "list of ns records"
-  default     = []
+  type = map(object({
+    name    = string
+    records = list(string)
+  }))
+  description = "map of objects for NS records"
+  default     = {}
 }

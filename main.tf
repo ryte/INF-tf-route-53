@@ -62,11 +62,11 @@ resource "aws_route53_record" "srv_records" {
 }
 
 resource "aws_route53_record" "ns_records" {
-  count   = length(var.ns_records) > 1 ? 1 : 0
-  name    = ""
-  ttl     = var.ttl
-  type    = "NS"
-  zone_id = var.zone_id
+  for_each = var.ns_records
+  name     = each.value.name
+  ttl      = var.ttl
+  type     = "NS"
+  zone_id  = var.zone_id
 
-  records = var.ns_records
+  records = each.value.records
 }
