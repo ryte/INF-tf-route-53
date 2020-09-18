@@ -60,3 +60,13 @@ resource "aws_route53_record" "srv_records" {
 
   records = each.value.records
 }
+
+resource "aws_route53_record" "ns_records" {
+  for_each = var.ns_records
+  name     = each.value.name
+  ttl      = var.ttl
+  type     = "NS"
+  zone_id  = var.zone_id
+
+  records = each.value.records
+}

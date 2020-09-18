@@ -60,3 +60,12 @@ variable "zone_id" {
   type        = string
   description = "zone id of domain"
 }
+
+variable "ns_records" {
+  type = map(object({
+    name    = string
+    records = list(string)
+  }))
+  description = "map of objects for NS records"
+  default     = {}
+}
