@@ -73,110 +73,49 @@ module "route_53" {
           "ns-69.awsdns.org",
           "ns-42069.awsdns.net",
         ]
-      }   
+      }
     }
 
     source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.0"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Required Inputs
+## Requirements
 
-The following input variables are required:
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
 
-### zone\_id
+## Providers
 
-Description: zone id of domain
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
-Type: `string`
+## Inputs
 
-## Optional Inputs
-
-The following input variables are optional (have default values):
-
-### a\_alias\_records
-
-Description: map of objects for A alias records
-
-Type: `object`
-
-Default: `<map>`
-
-### a\_records
-
-Description: map of objects for A records
-
-Type: `object`
-
-Default: `<map>`
-
-### cname\_records
-
-Description: map of objects for CNAME records
-
-Type: `object`
-
-Default: `<map>`
-
-### mx\_records
-
-Description: list of mx records with weight
-
-Type: `list(string)`
-
-Default: `<list>`
-
-### srv\_records
-
-Description: map of objects for SRV records
-
-Type: `object`
-
-Default: `<map>`
-
-### ttl
-
-Description: ttl
-
-Type: `string`
-
-Default: `"300"`
-
-### txt\_records
-
-Description: map of objects for TXT records
-
-Type: `object`
-
-Default: `<map>`
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| a\_alias\_records | map of objects for A alias records | <pre>map(object({<br>    name    = string<br>    record  = string<br>    zone_id = string<br>  }))</pre> | `{}` | no |
+| a\_records | map of objects for A records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| cname\_records | map of objects for CNAME records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| mx\_records | list of mx records with weight | `list(string)` | `[]` | no |
+| ns\_records | map of objects for NS records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| srv\_records | map of objects for SRV records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| ttl | ttl | `string` | `"300"` | no |
+| txt\_records | map of objects for TXT records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| zone\_id | zone id of domain | `string` | n/a | yes |
 
 ## Outputs
 
-The following outputs are exported:
-
-### a\_alias\_records
-
-Description:
-
-### a\_records
-
-Description:
-
-### cname\_records
-
-Description:
-
-### mx\_records
-
-Description:
-
-### srv\_records
-
-Description:
-
-### txt\_records
-
-Description:
+| Name | Description |
+|------|-------------|
+| a\_alias\_records | n/a |
+| a\_records | n/a |
+| cname\_records | n/a |
+| mx\_records | n/a |
+| srv\_records | n/a |
+| txt\_records | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -184,10 +123,11 @@ Description:
 
 - [Armin Grodon](https://github.com/x4121)
 - [Markus Schmid](https://github.com/h0raz)
+- [Alex Bershadsky](https://github.com/al-dexter)
 
 ## Changelog
 
-- 0.3.0 - Add support for ns records
+- 0.3.0 - Add support for creating NS records subdomain
 - 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
 - 0.1.2 - Update output variable of all records
