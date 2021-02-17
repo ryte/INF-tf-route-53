@@ -2,8 +2,16 @@ output "a_records" {
   value = aws_route53_record.a_records
 }
 
+output "aaaa_records" {
+  value = aws_route53_record.aaaa_records
+}
+
 output "a_alias_records" {
   value = aws_route53_record.a_alias_records
+}
+
+output "aaaa_alias_records" {
+  value = aws_route53_record.aaaa_alias_records
 }
 
 output "cname_records" {

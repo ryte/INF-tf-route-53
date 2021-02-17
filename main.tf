@@ -8,10 +8,33 @@ resource "aws_route53_record" "a_records" {
   records = each.value.records
 }
 
+resource "aws_route53_record" "aaaa_records" {
+  for_each = var.aaaa_records
+  name     = each.value.name
+  ttl      = var.ttl
+  type     = "AAAA"
+  zone_id  = var.zone_id
+
+  records = each.value.records
+}
+
 resource "aws_route53_record" "a_alias_records" {
   for_each = var.a_alias_records
   name     = each.value.name
   type     = "A"
+  zone_id  = var.zone_id
+
+  alias {
+    name                   = each.value.record
+    zone_id                = each.value.zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "aaaa_alias_records" {
+  for_each = var.aaaa_alias_records
+  name     = each.value.name
+  type     = "AAAA"
   zone_id  = var.zone_id
 
   alias {

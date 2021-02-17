@@ -31,7 +31,22 @@ module "route_53" {
         }
     }
 
+    aaaa_records = {
+        1 = {
+            name    = ""
+            records = ["1.2.3.4"]
+        }
+    }
+
     a_alias_records = {
+        1 = {
+            name    = "www"
+            record  = "webservice-main-alb-123465789012.eu-central-1.elb.amazonaws.com"
+            zone_id = "ABCDEFGHIJKLMN" // zone_id of the loadbalancer
+        }
+    }
+
+    aaaa_alias_records = {
         1 = {
             name    = "www"
             record  = "webservice-main-alb-123465789012.eu-central-1.elb.amazonaws.com"
@@ -76,7 +91,7 @@ module "route_53" {
       }
     }
 
-    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.0"
+    source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.1"
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -124,9 +139,11 @@ module "route_53" {
 - [Armin Grodon](https://github.com/x4121)
 - [Markus Schmid](https://github.com/h0raz)
 - [Alex Bershadsky](https://github.com/al-dexter)
+- [Danny Linden](https://github.com/dannylinden)
 
 ## Changelog
 
+- 0.3.1 - Add support for AAAA and AAAA Alias records
 - 0.3.0 - Add support for creating NS records subdomain
 - 0.2.1 - Utilize terraform 0.12.x features
 - 0.2.0 - Upgrade to terraform 0.12.x
