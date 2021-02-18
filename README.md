@@ -9,6 +9,209 @@ and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 This project is using [pre-commit](https://pre-commit.com/) to generate parts
 of the readme.
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+The following requirements are needed by this module:
+
+- terraform (>= 0.12)
+
+## Providers
+
+The following providers are used by this module:
+
+- aws
+
+## Required Inputs
+
+The following input variables are required:
+
+### zone\_id
+
+Description: zone id of domain
+
+Type: `string`
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### a\_alias\_records
+
+Description: map of objects for A alias records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    record  = string
+    zone_id = string
+  }))
+```
+
+Default: `{}`
+
+### a\_records
+
+Description: map of objects for A records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+### aaaa\_alias\_records
+
+Description: map of objects for AAAA alias records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    record  = string
+    zone_id = string
+  }))
+```
+
+Default: `{}`
+
+### aaaa\_records
+
+Description: map of objects for AAAA records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+### cname\_records
+
+Description: map of objects for CNAME records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+### mx\_records
+
+Description: list of mx records with weight
+
+Type: `list(string)`
+
+Default: `[]`
+
+### ns\_records
+
+Description: map of objects for NS records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+### srv\_records
+
+Description: map of objects for SRV records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+### ttl
+
+Description: ttl
+
+Type: `string`
+
+Default: `"300"`
+
+### txt\_records
+
+Description: map of objects for TXT records
+
+Type:
+
+```hcl
+map(object({
+    name    = string
+    records = list(string)
+  }))
+```
+
+Default: `{}`
+
+## Outputs
+
+The following outputs are exported:
+
+### a\_alias\_records
+
+Description: n/a
+
+### a\_records
+
+Description: n/a
+
+### aaaa\_alias\_records
+
+Description: n/a
+
+### aaaa\_records
+
+Description: n/a
+
+### cname\_records
+
+Description: n/a
+
+### mx\_records
+
+Description: n/a
+
+### srv\_records
+
+Description: n/a
+
+### txt\_records
+
+Description: n/a
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 ## Usage
 
 get the zone
@@ -94,49 +297,6 @@ module "route_53" {
     source = "github.com/ryte/INF-tf-route-53.git?ref=v0.3.1"
 }
 ```
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| terraform | >= 0.12 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| aws | n/a |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| a\_alias\_records | map of objects for A alias records | <pre>map(object({<br>    name    = string<br>    record  = string<br>    zone_id = string<br>  }))</pre> | `{}` | no |
-| a\_records | map of objects for A records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| aaaa\_alias\_records | map of objects for AAAA alias records | <pre>map(object({<br>    name    = string<br>    record  = string<br>    zone_id = string<br>  }))</pre> | `{}` | no |
-| aaaa\_records | map of objects for AAAA records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| cname\_records | map of objects for CNAME records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| mx\_records | list of mx records with weight | `list(string)` | `[]` | no |
-| ns\_records | map of objects for NS records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| srv\_records | map of objects for SRV records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| ttl | ttl | `string` | `"300"` | no |
-| txt\_records | map of objects for TXT records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
-| zone\_id | zone id of domain | `string` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| a\_alias\_records | n/a |
-| a\_records | n/a |
-| aaaa\_alias\_records | n/a |
-| aaaa\_records | n/a |
-| cname\_records | n/a |
-| mx\_records | n/a |
-| srv\_records | n/a |
-| txt\_records | n/a |
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Authors
 
