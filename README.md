@@ -113,6 +113,8 @@ module "route_53" {
 |------|-------------|------|---------|:--------:|
 | a\_alias\_records | map of objects for A alias records | <pre>map(object({<br>    name    = string<br>    record  = string<br>    zone_id = string<br>  }))</pre> | `{}` | no |
 | a\_records | map of objects for A records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
+| aaaa\_alias\_records | map of objects for AAAA alias records | <pre>map(object({<br>    name    = string<br>    record  = string<br>    zone_id = string<br>  }))</pre> | `{}` | no |
+| aaaa\_records | map of objects for AAAA records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
 | cname\_records | map of objects for CNAME records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
 | mx\_records | list of mx records with weight | `list(string)` | `[]` | no |
 | ns\_records | map of objects for NS records | <pre>map(object({<br>    name    = string<br>    records = list(string)<br>  }))</pre> | `{}` | no |
@@ -127,6 +129,8 @@ module "route_53" {
 |------|-------------|
 | a\_alias\_records | n/a |
 | a\_records | n/a |
+| aaaa\_alias\_records | n/a |
+| aaaa\_records | n/a |
 | cname\_records | n/a |
 | mx\_records | n/a |
 | srv\_records | n/a |
