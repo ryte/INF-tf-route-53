@@ -7,6 +7,15 @@ variable "a_records" {
   default     = {}
 }
 
+variable "aaaa_records" {
+  type = map(object({
+    name    = string
+    records = list(string)
+  }))
+  description = "map of objects for AAAA records"
+  default     = {}
+}
+
 variable "a_alias_records" {
   type = map(object({
     name    = string
@@ -14,6 +23,16 @@ variable "a_alias_records" {
     zone_id = string
   }))
   description = "map of objects for A alias records"
+  default     = {}
+}
+
+variable "aaaa_alias_records" {
+  type = map(object({
+    name    = string
+    record  = string
+    zone_id = string
+  }))
+  description = "map of objects for AAAA alias records"
   default     = {}
 }
 
